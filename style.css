@@ -88,8 +88,6 @@ li p {
 
 form {
   display: flex;
-  flex-direction: column;
-  margin-top: 7.8rem;
 
   align-items: center;
 }
@@ -99,14 +97,17 @@ fieldset {
   flex-direction: column;
   gap: 2.4rem;
   width: 75%;
+  margin: 7.8rem 4rem 0 4rem;
 }
 
-fieldset label,
-.content img {
+fieldset label {
   width: 1px;
   height: 1px;
   overflow: hidden;
   position: absolute;
+}
+.img {
+  display: none;
 }
 fieldset input {
   padding: 12px 16px 12px 14px;
@@ -206,4 +207,51 @@ footer {
   li {
     aspect-ratio: 15/10;
   }
+
+  .img {
+    display: grid;
+    place-self: flex-end;
+    transition: all 200ms ease-in;
+  }
+
+  fieldset {
+    margin: 0 9.2rem 0 10.9rem;
+  }
+}
+
+/***********Animation********/
+#cover {
+  --startY: -100%;
+  animation: move 0.22s;
+}
+
+footer {
+  --startY: 100%;
+  animation: move 0.2s;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(var(--startY));
+  }
+}
+.img,
+.list {
+  --delay: 0.4s;
+  animation: appear 0.4s var(--delay) backwards;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale (2.7);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+}
+.seta:hover,
+.list:hover {
+  filter: hue-rotate(3deg) contrast(101%) saturate(300%);
+  transform: scale(1) rotate(1deg);
 }
